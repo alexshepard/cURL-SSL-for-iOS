@@ -1,0 +1,180 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		FAAF4EC01562C8A80052E270 /* build-libraries.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "build-libraries.sh"; sourceTree = "<group>"; };
+		FAAF4EC21562C8B80052E270 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		FAAF4EC41562C8C00052E270 /* build-libcurl.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "build-libcurl.sh"; sourceTree = "<group>"; };
+		FAAF4EC51562C8C00052E270 /* curl-7.21.5.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "curl-7.21.5.tar.gz"; sourceTree = "<group>"; };
+		FAAF4EC71562C8C80052E270 /* build-libssl.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "build-libssl.sh"; sourceTree = "<group>"; };
+		FAAF4EC81562C8C80052E270 /* openssl-1.0.0d.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "openssl-1.0.0d.tar.gz"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		FAAF4EC31562C8C00052E270 /* cURL */ = {
+			isa = PBXGroup;
+			children = (
+				FAAF4EC41562C8C00052E270 /* build-libcurl.sh */,
+				FAAF4EC51562C8C00052E270 /* curl-7.21.5.tar.gz */,
+			);
+			path = cURL;
+			sourceTree = "<group>";
+		};
+		FAAF4EC61562C8C80052E270 /* OpenSSL */ = {
+			isa = PBXGroup;
+			children = (
+				FAAF4EC71562C8C80052E270 /* build-libssl.sh */,
+				FAAF4EC81562C8C80052E270 /* openssl-1.0.0d.tar.gz */,
+			);
+			path = OpenSSL;
+			sourceTree = "<group>";
+		};
+		FAF90C371562C87900809604 = {
+			isa = PBXGroup;
+			children = (
+				FAAF4EC61562C8C80052E270 /* OpenSSL */,
+				FAAF4EC31562C8C00052E270 /* cURL */,
+				FAAF4EC21562C8B80052E270 /* README.md */,
+				FAAF4EC01562C8A80052E270 /* build-libraries.sh */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		FAF90C3E1562C87900809604 /* cURL-SSL-for-iOS */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "build-libraries.sh";
+			buildConfigurationList = FAF90C411562C87900809604 /* Build configuration list for PBXLegacyTarget "cURL-SSL-for-iOS" */;
+			buildPhases = (
+			);
+			buildToolPath = /bin/sh;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = "cURL-SSL-for-iOS";
+			passBuildSettingsInEnvironment = 1;
+			productName = "cURL-SSL-for-iOS";
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		FAF90C391562C87900809604 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = SFAI;
+			};
+			buildConfigurationList = FAF90C3C1562C87900809604 /* Build configuration list for PBXProject "cURL-SSL-for-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAF90C371562C87900809604;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAF90C3E1562C87900809604 /* cURL-SSL-for-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		FAF90C3F1562C87900809604 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FAF90C401562C87900809604 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FAF90C421562C87900809604 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FAF90C431562C87900809604 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAF90C3C1562C87900809604 /* Build configuration list for PBXProject "cURL-SSL-for-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAF90C3F1562C87900809604 /* Debug */,
+				FAF90C401562C87900809604 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAF90C411562C87900809604 /* Build configuration list for PBXLegacyTarget "cURL-SSL-for-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAF90C421562C87900809604 /* Debug */,
+				FAF90C431562C87900809604 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAF90C391562C87900809604 /* Project object */;
+}
