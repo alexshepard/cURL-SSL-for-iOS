@@ -87,7 +87,7 @@ PLATFORM="iPhoneOS"
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc -arch ${ARCH}"
+export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc -arch ${ARCH} -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-openssl-${VERSION}.log"
@@ -116,7 +116,7 @@ PLATFORM="iPhoneOS"
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc -arch ${ARCH}"
+export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc -arch ${ARCH} -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-openssl-${VERSION}.log"
