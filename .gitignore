@@ -1,0 +1,7 @@
+OpenSSL/include
+OpenSSL/*.a
+OpenSSL/openssl-1.0.1c.tar.gz
+cURL/include
+cURL/*.a
+cURL/curl-7.25.0.tar.gz
+lib
