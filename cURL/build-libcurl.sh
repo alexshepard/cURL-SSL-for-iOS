@@ -21,9 +21,10 @@
 ###########################################################################
 #  Change values here							  #
 #									  #
-VERSION="7.25.0"								  #
-SDKVERSION="5.1"								  #
+VERSION="7.25.0"							  #
+SDKVERSION="5.1"							  #
 OPENSSL="${PWD}/../OpenSSL"						  #
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin			  #
 #									  #
 ###########################################################################
 #									  #
