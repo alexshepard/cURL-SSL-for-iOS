@@ -5,3 +5,5 @@ cURL/include
 cURL/*.a
 cURL/curl-7.25.0.tar.gz
 lib
+*/*.xcodeproj/xcuserdata
+*/*.xcodeproj/project.xcworkspace
