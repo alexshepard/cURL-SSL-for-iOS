@@ -20,6 +20,8 @@
 #
 ###########################################################################
 
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+
 CURRENTPATH=`pwd`
 BUILD_PATH="${CURRENTPATH}/lib"
 
