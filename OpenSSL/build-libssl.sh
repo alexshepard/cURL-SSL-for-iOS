@@ -22,7 +22,7 @@
 #  Change values here							  #
 #									  #
 VERSION="1.0.1c"							  #
-SDKVERSION="5.1"							  #
+SDKVERSION="6.0"							  #
 #									  #
 ###########################################################################
 #									  #
@@ -81,8 +81,8 @@ echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}, finished"
 #############
 
 #############
-# iPhoneOS armv6
-ARCH="armv6"
+# iPhoneOS armv7
+ARCH="armv7"
 PLATFORM="iPhoneOS"
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
@@ -107,11 +107,12 @@ make install >> "${LOG}" 2>&1
 make clean >> "${LOG}" 2>&1
 
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}, finished"
+
 #############
 
 #############
-# iPhoneOS armv7
-ARCH="armv7"
+# iPhoneOS armv7s
+ARCH="armv7s"
 PLATFORM="iPhoneOS"
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
@@ -143,9 +144,9 @@ echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}, finished"
 # Universal Library
 echo "Build universal library..."
 
-lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/lib/libssl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv6.sdk/lib/libssl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libssl.a -output ${CURRENTPATH}/libssl.a
+lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/lib/libssl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libssl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libssl.a -output ${CURRENTPATH}/libssl.a
 
-lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv6.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libcrypto.a -output ${CURRENTPATH}/libcrypto.a
+lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libcrypto.a -output ${CURRENTPATH}/libcrypto.a
 
 mkdir -p ${CURRENTPATH}/include
 cp -R ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/include/openssl ${CURRENTPATH}/include/
