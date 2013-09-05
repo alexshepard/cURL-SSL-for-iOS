@@ -21,8 +21,8 @@
 ###########################################################################
 #  Change values here							  #
 #									  #
-VERSION="7.25.0"							  #
-SDKVERSION="6.0"							  #
+VERSION="7.31.0"							  #
+SDKVERSION="7.0"							  #
 OPENSSL="${PWD}/../OpenSSL"						  #
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin			  #
 #									  #
@@ -53,9 +53,7 @@ fi
 
 mkdir -p "${CURRENTPATH}/src"
 tar zxf curl-${VERSION}.tar.gz -C "${CURRENTPATH}/src"
-tar zxf c-ares-1.6.0.tar.gz -C "${CURRENTPATH}/src"
 cd "${CURRENTPATH}/src/curl-${VERSION}"
-ln -s ../c-ares-1.6.0 ares
 
 ############
 # iPhone Simulator
@@ -64,27 +62,17 @@ PLATFORM="iPhoneSimulator"
 echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc"
-export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL} -L${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk/lib"
+export CC="/Applications/Xcode5-DP5.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+export CPPFLAGS="-I${OPENSSL}/include"
+export LDFLAGS="-L${OPENSSL}"
+export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk/build-libcurl-${VERSION}.log"
 
-cd ares
-echo "Configure c-ares for ${PLATFORM} ${SDKVERSION} ${ARCH}"
-
-./configure --prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk --disable-shared > "${LOG}" 2>&1
-
-echo "Make c-ares for ${PLATFORM} ${SDKVERSION} ${ARCH}"
-
-make >> "${LOG}" 2>&1
-make install >> "${LOG}" 2>&1
-make clean >> "${LOG}" 2>&1
-cd - >> "${LOG}" 2>&1
-
 echo "Configure libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 
-./configure --prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk --disable-shared --with-random=/dev/urandom --with-ssl --enable-ares > "${LOG}" 2>&1
+./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk -disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
 
 echo "Make libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 
@@ -102,28 +90,17 @@ PLATFORM="iPhoneOS"
 echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc"
-export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL} -miphoneos-version-min=${SDKVERSION}  -L${OPENSSL} -L${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/lib"
+export CC="/Applications/Xcode5-DP5.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+export CPPFLAGS="-I${OPENSSL}/include"
+export LDFLAGS="-L${OPENSSL}"
+export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-libcurl-${VERSION}.log"
 
-cd ares
-echo "Configure c-ares for ${PLATFORM} ${SDKVERSION} ${ARCH}"
-
-./configure --prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared > "${LOG}" 2>&1
-
-echo "Make c-ares for ${PLATFORM} ${SDKVERSION} ${ARCH}"
-
-make >> "${LOG}" 2>&1
-make install >> "${LOG}" 2>&1
-
-make clean >> "${LOG}" 2>&1
-cd - >> "${LOG}" 2>&1
-
 echo "Configure libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 
-./configure --prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl --enable-ares > "${LOG}" 2>&1
+./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
 
 echo "Make libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 
@@ -141,27 +118,17 @@ PLATFORM="iPhoneOS"
 echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc"
-export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL} -miphoneos-version-min=${SDKVERSION} -L${OPENSSL} -L${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/lib"
+export CC="/Applications/Xcode5-DP5.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+export CPPFLAGS="-I${OPENSSL}/include"
+export LDFLAGS="-L${OPENSSL}"
+export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-libcurl-${VERSION}.log"
 
-cd ares
-echo "Configure c-ares for ${PLATFORM} ${SDKVERSION} ${ARCH}"
-
-./configure --prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared > "${LOG}" 2>&1
-
-echo "Make c-ares for ${PLATFORM} ${SDKVERSION} ${ARCH}"
-
-make >> "${LOG}" 2>&1
-make install >> "${LOG}" 2>&1
-make clean >> "${LOG}" 2>&1
-cd - >> "${LOG}" 2>&1
-
 echo "Configure libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 
-./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl --enable-ares > "${LOG}" 2>&1
+./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
 
 echo "Make libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 
@@ -174,9 +141,7 @@ echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}, finished"
 
 #############
 # Universal Library
-echo "Build universal libraries..."
-
-lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/lib/libcares.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libcares.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libcares.a -output ${CURRENTPATH}/libcares.a
+echo "Build universal library..."
 
 lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/lib/libcurl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libcurl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libcurl.a -output ${CURRENTPATH}/libcurl.a
 

@@ -21,8 +21,8 @@
 ###########################################################################
 #  Change values here							  #
 #									  #
-VERSION="1.0.1c"							  #
-SDKVERSION="6.0"							  #
+VERSION="1.0.1e"							  #
+SDKVERSION="7.0"							  #
 #									  #
 ###########################################################################
 #									  #
@@ -60,7 +60,7 @@ PLATFORM="iPhoneSimulator"
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc -arch ${ARCH}"
+export CC="/Applications/Xcode5-DP5.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch ${ARCH} -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk/build-openssl-${VERSION}.log"
@@ -87,7 +87,7 @@ PLATFORM="iPhoneOS"
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc -arch ${ARCH} -miphoneos-version-min=${SDKVERSION}"
+export CC="/Applications/Xcode5-DP5.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch ${ARCH} -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-openssl-${VERSION}.log"
@@ -117,7 +117,7 @@ PLATFORM="iPhoneOS"
 echo "Building openssl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc -arch ${ARCH} -miphoneos-version-min=${SDKVERSION}"
+export CC="/Applications/Xcode5-DP5.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch ${ARCH} -miphoneos-version-min=${SDKVERSION}"
 mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
 
 LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-openssl-${VERSION}.log"
